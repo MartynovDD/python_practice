@@ -28,7 +28,7 @@ assert fib(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]  # Case 5
 
 assert fib(-1) == []  # Case 6
 assert fib(4.0) == [0, 1, 1, 2]  # Case 7
-assert fib("1") == []  # Case 8
+assert fib("2") == []  # Case 8
 
 
 
