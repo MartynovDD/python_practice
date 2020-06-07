@@ -1,22 +1,25 @@
-def fib(n):
+def fib_gen(n):
     a, b = 0, 1
-    result = [a, b]
-    try:
-        if n == 0:
-            return []
-        if n == 1:
-            return [0]
-        if n < 0:
-            return []
-        if isinstance(n, float):
-            n = int(n)
-    except TypeError:
-        print("incorrect value")
-        return []
-
-    for i in range(2, n):
+    yield a
+    yield b
+    for i in range(0, n):
         a, b = b, a + b
-        result.append(b)
+        yield b
+
+
+def fib(n):
+    # try:
+    #     if isinstance(n, float):
+    #         n = int(n)
+    # except TypeError:
+    #     print("incorrect value")
+    #     return []
+    if isinstance(n, float):
+        n = int(n)
+    if isinstance(n, str):
+        return []
+    x = fib_gen(n)
+    result = [next(x) for i in range(n)]
     return result
 
 
@@ -29,7 +32,3 @@ assert fib(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]  # Case 5
 assert fib(-1) == []  # Case 6
 assert fib(4.0) == [0, 1, 1, 2]  # Case 7
 assert fib("2") == []  # Case 8
-
-
-
-
